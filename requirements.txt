@@ -2,5 +2,8 @@ numpy
 pandas
 matplotlib
 scikit-learn
+pymongo
+certifi
+
 
 #-e .
