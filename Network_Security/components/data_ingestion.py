@@ -46,6 +46,9 @@ class DataIngestion:
             raise NetworkSecurityException
         
     def export_data_into_feature_store(self,dataframe: pd.DataFrame):
+        """
+        Keep the raw data in artifacts\date\data_ingestion\feature_store\((phishingdata.csv))
+        """
         try:
             feature_store_file_path=self.data_ingestion_config.feature_store_file_path
             #creating folder
@@ -58,6 +61,12 @@ class DataIngestion:
             raise NetworkSecurityException(e,sys)
         
     def split_data_as_train_test(self,dataframe: pd.DataFrame):
+        """
+        Split the data in into train and test..
+        And Keep train set in artifacts\date\data_ingestion\ingested\((train.csv)),
+        Keep test set in artifacts\date\data_ingestion\ingested\((test.csv))
+        """
+
         try:
             train_set, test_set = train_test_split(
                 dataframe, test_size=self.data_ingestion_config.train_test_split_ratio
@@ -89,6 +98,9 @@ class DataIngestion:
         
         
     def initiate_data_ingestion(self):
+        '''
+        Call the above classes(Or define the objs for above classes)
+        '''
         try:
             dataframe=self.export_collection_as_dataframe()
             dataframe=self.export_data_into_feature_store(dataframe)

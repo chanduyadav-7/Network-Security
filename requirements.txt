@@ -4,6 +4,7 @@ matplotlib
 scikit-learn
 pymongo
 certifi
+mlflow
 
 
 #-e .
